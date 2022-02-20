@@ -55,12 +55,12 @@ country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, def
 disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default = "Select All")
 
 if country_filter == "Select All":
-      c_f = list(df['Country Name'].unique())
+      c_f = df['Country Name'].unique()
 else: 
       c_f = country_filter 
 
 if disease_filter == "Select All":
-       d_f = list(df['Disease'].unique())
+       d_f = df['Disease'].unique()
 else: 
        d_f = disease_filter 
      
