@@ -43,11 +43,6 @@ df.drop(df.index[df['Country Name'] == 'Israel'], inplace = True)
 
 
 
-my_expander = st.beta_expander()
-my_expander.write('Dive Deep!')
-clicked = my_expander.button('Show More!')
-
-
 all_countries = list(df['Country Name'].unique())
 all_diseases = list(df['Disease'].unique())
 
@@ -60,16 +55,16 @@ country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, def
 disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default = "Select All")
 
 if country_filter == "Select All":
-      country_filter = list(df['Country Name'].unique())
+      c_f = list(df['Country Name'].unique())
 else: 
-      country_filter 
+      c_f = country_filter 
 
 if disease_filter == "Select All":
-       disease_filter = list(df['Disease'].unique())
+       d_f = list(df['Disease'].unique())
 else: 
-       disease_filter 
+       d_f = disease_filter 
      
-df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
+df = df[(df["Country Name"].isin(c_f)) & (df["Disease"].isin(d_f))]
 
 st.write(df.head(10))
 
