@@ -49,13 +49,17 @@ all_diseases.append("Select All")
 
 
 #country_filter = st.sidebar.selectbox('Filter By Country:', df['Country Name'].unique())
-country_filter = st.sidebar.multiselect('Filter By Country:', all_countries)
-disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases)
+country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, default = "Select All")
+disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default = "Select All")
 
+if country_filter == "Select All":
+      country_filter = df['Country Name'].unique()
 
-       
+if disease_filter == "Select All":
+       disease_filter = df['Disease'].unique()
+     
 df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
-st.write(df.head(10))
+
 
 
 #Top 10 countries in terms of deaths 
