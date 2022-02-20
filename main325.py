@@ -110,6 +110,12 @@ layout2 = dict(title = 'Top 10 Diseases causing Deaths in the World',
 fig2 = dict(data=data2, layout=layout2)
 st.plotly_chart(fig2)
 
+
+my_expander = st.beta_expander()
+my_expander.write('Dive Deep!')
+clicked = my_expander.button('Show More!')
+
+
 def findCountry_alpha2 (country_name):
     try:
         return pycountry.countries.get(name=country_name).alpha_2
