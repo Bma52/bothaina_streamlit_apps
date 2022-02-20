@@ -52,12 +52,12 @@ all_diseases.append("Select All")
 country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, default = "Select All")
 disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default = "Select All")
 
-if country_filter == "Select All":
+if country_filter is "Select All":
       country_filter = df['Country Name'].unique()
 else: 
       country_filter 
 
-if disease_filter == "Select All":
+if disease_filter is "Select All":
        disease_filter = df['Disease'].unique()
 else: 
        disease_filter 
