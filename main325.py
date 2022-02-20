@@ -11,9 +11,6 @@ import plotly.graph_objects as go
 from plotly.offline import init_notebook_mode, iplot
 init_notebook_mode()
 
-@st.cache
-
-
 
 
 st.title("Causes of WorldWide Deaths")
