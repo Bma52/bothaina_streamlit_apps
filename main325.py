@@ -52,13 +52,15 @@ all_diseases.append("Select All")
 country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, default= "Select All")
 disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default= "Select All")
 
+df1 = pd.DataFrame()
 if country_filter == "Select All":
-      df1.loc[:] = df.loc[:].values()
+      df1 = df
 else:       
       df1 = df[df["Country Name"].isin(country_filter)]
 
+df2 = pd.DataFrame()
 if disease_filter == "Select All":
-     df2.loc[:] = df1.loc[:].values()
+     df2 = df1
 else:
       df2 = df1[df1["Disease"].isin(disease_filter)]
        
