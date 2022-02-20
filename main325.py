@@ -63,7 +63,7 @@ else:
       df2 = df1[df1["Disease"].isin(disease_filter)]
        
 #df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
-
+st.write(df2.head(10))
 
 
 #Top 10 countries in terms of deaths 
