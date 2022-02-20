@@ -13,19 +13,6 @@ init_notebook_mode()
 
 @st.cache
 
-st.markdown( 
-     """
-    <style>
-    .reportview-container {
-        background: url("url_goes_here")
-    }
-   .sidebar .sidebar-content {
-        background: url("url_goes_here")
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 
 
