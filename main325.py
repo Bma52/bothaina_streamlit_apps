@@ -49,27 +49,17 @@ all_diseases.append("Select All")
 
 
 #country_filter = st.sidebar.selectbox('Filter By Country:', df['Country Name'].unique())
-country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, default= "Select All")
-disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default= "Select All")
+country_filter = st.sidebar.multiselect('Filter By Country:', all_countries)
+disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases)
 
-df1 = pd.DataFrame()
-if country_filter == "Select All":
-      df1 = df
-else:       
-      df1 = df[df["Country Name"].isin(country_filter)]
 
-df2 = pd.DataFrame()
-if disease_filter == "Select All":
-     df2 = df1
-else:
-      df2 = df1[df1["Disease"].isin(disease_filter)]
        
-#df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
+df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
 st.write(df2.head(10))
 
 
 #Top 10 countries in terms of deaths 
-df_deaths = df2.groupby('Country Name').sum('Deaths')
+df_deaths = df.groupby('Country Name').sum('Deaths')
 
 modified = df_deaths.reset_index()
 
@@ -78,7 +68,7 @@ print(top_10_countries)
 
 
 #Top 10 Leading deaths in the world 
-df_diseases = df2.groupby('Disease').sum('Deaths')
+df_diseases = df.groupby('Disease').sum('Deaths')
 
 modified_disease = df_diseases.reset_index()
 
@@ -126,7 +116,7 @@ def findCountry_alpha3 (country_name):
 modified['Country_alpha_2'] = modified.apply(lambda row: findCountry_alpha2(row['Country Name']) , axis = 1)   
 modified['Country_alpha_3'] = modified.apply(lambda row: findCountry_alpha3(row['Country Name']) , axis = 1)
 
-fig = px.scatter(df2, y="Country Name", x="Deaths", color="Disease", symbol="Disease")
+fig = px.scatter(df, y="Country Name", x="Deaths", color="Disease", symbol="Disease")
 fig.update_traces(marker_size=10)
 st.plotly_chart(fig)
 
@@ -137,7 +127,7 @@ fig = px.choropleth(modified, locations="Country_alpha_3",
                     color_continuous_scale=px.colors.sequential.Plasma)
 st.plotly_chart(fig)
 
-df_grouped = df2.groupby(["Country Name", "Disease"]).sum("Deaths")
+df_grouped = df.groupby(["Country Name", "Disease"]).sum("Deaths")
 
 
 
