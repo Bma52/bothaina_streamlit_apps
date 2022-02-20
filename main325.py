@@ -54,12 +54,17 @@ disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, defa
 
 if country_filter == "Select All":
       country_filter = df['Country Name'].unique()
+else: 
+      country_filter 
 
 if disease_filter == "Select All":
        disease_filter = df['Disease'].unique()
+else: 
+       disease_filter 
      
 df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
 
+st.write(df.head(10))
 
 
 #Top 10 countries in terms of deaths 
