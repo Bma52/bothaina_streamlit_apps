@@ -63,13 +63,10 @@ if disease_filter == ["Select All"]:
        d_f = df['Disease'].unique()
 else: 
        d_f = disease_filter 
-       
-st.write(c_f)
-st.write(d_f)
+     
+
+
 df = df[(df["Country Name"].isin(c_f)) & (df["Disease"].isin(d_f))]
-
-st.write(df.head(10))
-
 
 #Top 10 countries in terms of deaths 
 df_deaths = df.groupby('Country Name').sum('Deaths')
