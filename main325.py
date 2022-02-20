@@ -53,14 +53,14 @@ country_filter = st.sidebar.multiselect('Filter By Country:', all_countries, def
 disease_filter = st.sidebar.multiselect('Filter By Disease:', all_diseases, default= "Select All")
 
 if country_filter == "Select All":
-      df = df
+      df 
 else:       
-      df = df[(df["Country Name"].isin(country_filter))]
+      df = df[df["Country Name"].isin(country_filter)]
 
 if disease_filter == "Select All":
-      df = df
+      df 
 else:
-      df = df[(df["Disease"].isin(disease_filter))]
+      df = df[df["Disease"].isin(disease_filter)]
        
 #df = df[(df["Country Name"].isin(country_filter)) & (df["Disease"].isin(disease_filter))]
 
