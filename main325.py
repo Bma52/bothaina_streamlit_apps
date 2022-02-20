@@ -18,7 +18,7 @@ st.markdown("It is important to understand what is meant by the cause of death a
 st.write("Below, in our section on Measurement, you find a more detailed explanation.")
 
 st.markdown("<font size= 5px color='green'> PLEASE NOTE that the dataset is a public one found on Kaggle and it misses date which is an important metric for the below study, as usually we should limit our study to a specific period for a well structured analysis.</font>", unsafe_allow_html=True )
-df = pd.read_csv("/Users/bothainaa/Desktop/Death Cause Reason by Country.csv")
+df = pd.read_csv("https://github.com/Bma52/bothaina_streamlit_apps/blob/main/Death%20Cause%20Reason%20by%20Country.csv")
 
 df = df.rename(columns={" Alzheimer's disease": 'Alzeheimer disease', "Parkinson's disease": 'Parkinson disease'})
 
