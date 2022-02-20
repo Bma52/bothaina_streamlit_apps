@@ -41,6 +41,13 @@ df = pd.melt(df, id_vars='Country Name', value_vars=['Covid-19 Deaths', 'Cardiov
 df = df.rename(columns={"variable": 'Disease', "value": 'Deaths'})
 df.drop(df.index[df['Country Name'] == 'Israel'], inplace = True)
 
+
+
+my_expander = st.beta_expander()
+my_expander.write('Dive Deep!')
+clicked = my_expander.button('Show More!')
+
+
 all_countries = list(df['Country Name'].unique())
 all_diseases = list(df['Disease'].unique())
 
@@ -111,9 +118,6 @@ fig2 = dict(data=data2, layout=layout2)
 st.plotly_chart(fig2)
 
 
-my_expander = st.beta_expander()
-my_expander.write('Dive Deep!')
-clicked = my_expander.button('Show More!')
 
 
 def findCountry_alpha2 (country_name):
