@@ -77,6 +77,8 @@ top_10_countries = modified.sort_values('Deaths', ascending = False).head(10)
 print(top_10_countries)
 
 
+
+
 #Top 10 Leading deaths in the world 
 df_diseases = df.groupby('Disease').sum('Deaths')
 
@@ -98,7 +100,7 @@ fig = dict(data=data, layout=layout)
 st.plotly_chart(fig)
 
 
-
+st.write("Data shed light on the cardiovascular disease as the top cause for deaths around the world.")
 
 data2 = [go.Bar(x=top_10_diseases['Disease'],
             y=top_10_diseases.Deaths, marker=dict(color='#ffcdd2'))]
@@ -129,10 +131,15 @@ def findCountry_alpha3 (country_name):
 modified['Country_alpha_2'] = modified.apply(lambda row: findCountry_alpha2(row['Country Name']) , axis = 1)   
 modified['Country_alpha_3'] = modified.apply(lambda row: findCountry_alpha3(row['Country Name']) , axis = 1)
 
+
+st.write("The below scatter plot analyzes both country and disease so that we observe the top diseases in each country.")
+
 fig = px.scatter(df, y="Country Name", x="Deaths", color="Disease", symbol="Disease")
 fig.update_traces(marker_size=10)
 st.plotly_chart(fig)
 
+
+st.write("This heat map sows the hot areas were deaths reords high numbers as well as the low rated countries.")
 
 fig = px.choropleth(modified, locations="Country_alpha_3",
                     color="Deaths", # lifeExp is a column of gapminder
